@@ -43,6 +43,8 @@ Plug 'dag/vim-fish'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
+Plug 'jiangmiao/auto-pairs'
+
 " YCM
 " Follow README: https://github.com/ycm-core/YouCompleteMe#installation
 " after PlugInstall to compile YCM
@@ -140,15 +142,6 @@ set signcolumn=yes
 " Settings needed for .lvimrc
 set exrc
 set secure
-
-" Auto close
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
 
 " Sane splits
 set splitright
