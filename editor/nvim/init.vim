@@ -45,6 +45,9 @@ Plug 'plasticboy/vim-markdown'
 
 Plug 'jiangmiao/auto-pairs'
 
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 
 call plug#end()
 
