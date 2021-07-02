@@ -48,6 +48,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+Plug 'airblade/vim-gitgutter'
+
 
 call plug#end()
 
@@ -64,6 +66,9 @@ let g:secure_modelines_allowed_items = [
                 \ "rightleft",   "rl",   "norightleft", "norl",
                 \ "colorcolumn"
                 \ ]
+
+" GitGutter
+let g:gitgutter_enabled=1
 
 " Lightline
 let g:lightline = {
