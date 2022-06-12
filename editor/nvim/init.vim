@@ -103,7 +103,7 @@ let javaScript_fold=0
 let java_ignore_javadoc=1
 
 " Quick-save
-"nmap <leader>w :w<CR>
+nmap <leader>w :w<CR>
 
 " Don't confirm .lvimrc
 let g:localvimrc_ask = 0
