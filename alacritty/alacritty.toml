@@ -14,3 +14,6 @@ blur = true
 [font]
 normal.family = "MesloLGS Nerd Font Mono"
 size = 19
+
+[keyboard]
+bindings = [{ key = "F12", action = "ToggleFullscreen" }]
