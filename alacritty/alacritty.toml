@@ -20,3 +20,12 @@ bindings = [{ key = "F12", action = "ToggleFullscreen" }]
 import = [
     "~/.config/alacritty/alacritty-theme/themes/gruvbox_dark.toml"
 ]
+
+[terminal.shell]
+program = "/bin/zsh"
+args = [
+	"-l", 
+	"-c", 
+	"source ~/.zshrc; tmux attach 2> /dev/null || tmux"
+]
+
