@@ -26,6 +26,6 @@ program = "/bin/zsh"
 args = [
 	"-l", 
 	"-c", 
-	"source ~/.zshrc; tmux attach 2> /dev/null || tmux"
+	"source ~/.zshrc; tmux attach || tmux"
 ]
 
