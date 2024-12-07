@@ -50,6 +50,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'airblade/vim-gitgutter'
 
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 
