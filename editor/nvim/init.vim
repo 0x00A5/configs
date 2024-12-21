@@ -6,6 +6,7 @@ set shell=/bin/bash
 " Load vundle
 set nocompatible
 filetype off
+
 call plug#begin()
 
 " Load plugins
@@ -97,18 +98,12 @@ if executable('rg')
 	set grepprg=rg\ --no-heading\ --vimgrep
 	set grepformat=%f:%l:%c:%m
 endif
-" Javascript
-let javaScript_fold=0
-
-" Java
-let java_ignore_javadoc=1
 
 " Quick-save
 nmap <leader>w :w<CR>
 
 " Don't confirm .lvimrc
 let g:localvimrc_ask = 0
-
 " rust
 let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1
@@ -272,10 +267,6 @@ set nowritebackup
 
 " Give more space for displaying messages.
 set cmdheight=2
-
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
