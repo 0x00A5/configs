@@ -20,8 +20,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'andymass/vim-matchup'
 
-" Nerdtree
-Plug 'preservim/nerdtree'
+" nvimtree
+Plug 'nvim-tree/nvim-tree.lua'
 
 " Color Scheme
 Plug 'morhetz/gruvbox'
@@ -115,6 +115,11 @@ let g:rust_clip_command = 'xclip -selection clipboard'
 set cmdheight=2
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
+
+" nvim-tree
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
+lua require'nvim-tree'.setup()
 
 " =============================================================================
 " # Editor settings
