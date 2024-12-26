@@ -1,6 +1,9 @@
 return {
 	{
-		"mhinz/vim-signify",
+		"airblade/vim-gitgutter",
+		config = function()
+			require('vim-gitgutter').setup()
+		end
 	},
 	-- auto-cd to root of git project
 	{

@@ -36,7 +36,7 @@ return {
 			-- no need to also show mode in cmd line when we have bar
 			vim.o.showmode = false
 			vim.g.lightline = {
-				colorscheme = 'darcula',
+				colorscheme = 'Tomorrow_Night',
 				active = {
 					left = {
 						{ 'mode', 'paste' },
@@ -45,7 +45,8 @@ return {
 					right = {
 						{ 'lineinfo' },
 						{ 'percent' },
-						{ 'fileencoding', 'filetype' }
+						{ 'fileencoding', 'filetype' },
+						{ 'lsp_errors', 'lsp_warnings', 'lsp_ok', 'lineinfo' }
 					},
 				},
 				component_function = {
