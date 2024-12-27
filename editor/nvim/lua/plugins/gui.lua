@@ -47,11 +47,13 @@ return {
 					right = {
 						{ 'lineinfo' },
 						{ 'percent' },
-						{ 'fileencoding', 'filetype' }
+						{ 'fileencoding', 'filetype' },
+						{ 'lspstatus' },
 					},
 				},
 				component_function = {
-					filename = 'LightlineFilename'
+					filename = 'LightlineFilename',
+					lspstatus = 'LspStatus',
 				},
 			}
 			function LightlineFilenameInLua(opts)
@@ -61,7 +63,23 @@ return {
 					return vim.fn.getreg('%')
 				end
 			end
+			-- get lsp statusline
+			function LspStatusInLua()
+				if #vim.lsp.buf_get_clients() > 0 then
+					return require('lsp-status').status()
+				else
+					return ''
+				end
+			end
 			-- https://github.com/itchyny/lightline.vim/issues/657
+			vim.api.nvim_exec(
+				[[
+				function! g:LspStatus()
+					return v:lua.LspStatusInLua()
+				endfunction
+				]],
+				true
+			)
 			vim.api.nvim_exec(
 				[[
 				function! g:LightlineFilename()

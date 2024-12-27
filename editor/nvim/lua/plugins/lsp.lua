@@ -2,12 +2,21 @@ return {
 	-- LSP
 	{
 		'neovim/nvim-lspconfig',
+		dependencies = {
+			'nvim-lua/lsp-status.nvim',
+		},
 		config = function()
+			-- Setup lsp statusline
+			local lsp_status = require('lsp-status')
+			lsp_status.register_progress()
 			-- Setup language servers.
 			local lspconfig = require('lspconfig')
 
 			-- Rust
 			lspconfig.rust_analyzer.setup {
+				-- lsp status
+				on_attach = lsp_status.on_attach,
+				capabilities = lsp_status.capabilities,
 				-- Server-specific settings. See `:help lspconfig-setup`
 				settings = {
 					["rust-analyzer"] = {

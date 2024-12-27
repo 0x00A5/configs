@@ -70,7 +70,7 @@ vim.opt.listchars = 'tab:^ ,nbsp:¬,extends:»,precedes:«,trail:•'
 -- vim.opt.cmdheight = 2
 -- vim.opt.cindent = true
 -- http://stackoverflow.com/questions/2158516/delay-before-o-opens-a-new-line
--- vim.opt.timeoutlen = 300
+vim.opt.timeoutlen = 300
 
 --" Wrapping options
 --set formatoptions=tc " wrap text and comments using textwidth
