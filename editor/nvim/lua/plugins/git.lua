@@ -22,4 +22,9 @@ return {
 			require('blame').setup()
 		end,
 	},
+	-- merge tool
+	{
+		"sindrets/diffview.nvim",
+		config = true,
+	}
 }
