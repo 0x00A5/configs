@@ -21,7 +21,7 @@ return {
 				settings = {
 					["rust-analyzer"] = {
 						cargo = {
-							allFeatures = true,
+							features = "all",
 						},
 						imports = {
 							group = {
