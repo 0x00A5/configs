@@ -33,8 +33,6 @@ args = [
 #[terminal.shell]
 #program = "/bin/bash"
 #args = [
-#	"-l",
-#	"-c",
-#	"source ~/.bashrc; tmux new-session"
+#	"-l"
 #]
 
