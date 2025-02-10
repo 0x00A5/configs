@@ -29,3 +29,12 @@ args = [
 	"source ~/.zshrc; tmux attach || tmux"
 ]
 
+# For my Linux i3wm setup
+#[terminal.shell]
+#program = "/bin/bash"
+#args = [
+#	"-l",
+#	"-c",
+#	"source ~/.bashrc; tmux new-session"
+#]
+
