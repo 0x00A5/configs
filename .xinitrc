@@ -53,5 +53,8 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
+# Keyboard repeat delay
+xset r rate 200 30
+
 twm &
 exec i3
