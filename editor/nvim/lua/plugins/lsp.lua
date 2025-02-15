@@ -37,6 +37,13 @@ return {
 				},
 			}
 
+			-- Python LSP
+			lspconfig.pyright.setup {
+				-- lsp status
+				on_attach = lsp_status.on_attach,
+				capabilities = lsp_status.capabilities,
+			}
+
 			-- Bash LSP
 			local configs = require 'lspconfig.configs'
 			if not configs.bash_lsp and vim.fn.executable('bash-language-server') == 1 then
