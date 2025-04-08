@@ -5,6 +5,11 @@
       "resolved": "ghcr.io/devcontainers-contrib/features/fzf@sha256:f05d90b477f475112e4cd07744d458f3ab9a0cd9f6ae497e1a7e830d010f101f",
       "integrity": "sha256:f05d90b477f475112e4cd07744d458f3ab9a0cd9f6ae497e1a7e830d010f101f"
     },
+    "ghcr.io/devcontainers-extra/features/fish-apt-get:1": {
+      "version": "1.0.4",
+      "resolved": "ghcr.io/devcontainers-extra/features/fish-apt-get@sha256:5b0c41aaf0a2ec5e85f3a5edac7b91c55d0da6fb5650b1a8f3f94e40063021b0",
+      "integrity": "sha256:5b0c41aaf0a2ec5e85f3a5edac7b91c55d0da6fb5650b1a8f3f94e40063021b0"
+    },
     "ghcr.io/devcontainers-extra/features/protoc:1": {
       "version": "1.0.2",
       "resolved": "ghcr.io/devcontainers-extra/features/protoc@sha256:9cf56bff763a2997130c21d3d4b9ae7a7119243067c0c8f818a9c0e98bec2a7f",

@@ -7,4 +7,6 @@ curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install 
 fish -c "omf install bobthefish"
 
 # use stow to create symlink
-stow -t ~/.config -S dotfiles
+mkdir ~/.config
+cd ~/dotfiles
+stow --target ~/.config . -v
