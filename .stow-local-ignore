@@ -1,4 +1,5 @@
 /.git
+/alacritty
 /bootstrap.sh
 /polybar
 /.xinitrc
