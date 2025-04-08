@@ -4,6 +4,4 @@
 ARG VARIANT="buster"
 FROM mcr.microsoft.com/devcontainers/rust:1-${VARIANT}
 
-RUN apt-get update && apt-get install -y stow clang fish neovim
-RUN curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
-RUN fish -c "omf install bobthefish"
+RUN apt-get update && apt-get install -y clang

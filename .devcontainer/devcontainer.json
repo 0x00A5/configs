@@ -9,12 +9,9 @@
 		"dockerfile": "Dockerfile"
 	},
 	"features": {
-		"ghcr.io/devcontainers/features/docker-in-docker:1": {
-			"version": "latest"
-		},
+		"ghcr.io/devcontainers/features/docker-in-docker:1": {},
 		"ghcr.io/devcontainers/features/common-utils:2": {
-			"installZsh": "true",
-			"username": "vscode",
+			"username": "yuanl",
 			"userUid": "1000",
 			"userGid": "1000",
 			"upgradePackages": "true"
@@ -24,7 +21,14 @@
 			"version": "latest",
 			"ppa": "false"
 		},
-		"ghcr.io/devcontainers-extra/features/protoc:1": "latest"
+		"ghcr.io/devcontainers-extra/features/protoc:1": "latest",
+		"ghcr.io/duduribeiro/devcontainer-features/neovim:1": {
+			"version": "stable"
+		},
+		"ghcr.io/devcontainers-contrib/features/fzf:1": {},
+		"ghcr.io/kreemer/features/stow:1": {},
+		"ghcr.io/devcontainers-extra/features/ripgrep:1": {}
+
 	}
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
