@@ -22,9 +22,7 @@
 			"ppa": "false"
 		},
 		"ghcr.io/devcontainers-extra/features/protoc:1": "latest",
-		"ghcr.io/duduribeiro/devcontainer-features/neovim:1": {
-			"version": "stable"
-		},
+		"ghcr.io/devcontainers-extra/features/neovim-apt-get:1": {},
 		"ghcr.io/devcontainers-contrib/features/fzf:1": {},
 		"ghcr.io/kreemer/features/stow:1": {},
 		"ghcr.io/devcontainers-extra/features/ripgrep:1": {},
