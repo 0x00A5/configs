@@ -1,8 +1,6 @@
 /.git
-/alacritty
 /bootstrap.sh
 /polybar
 /.xinitrc
-/bootstrap.sh
 /.devcontainer
 /i3
