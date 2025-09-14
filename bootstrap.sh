@@ -9,4 +9,5 @@ fish -c "omf install bobthefish"
 # use stow to create symlink
 mkdir ~/.config
 cd ~/dotfiles
-stow --target ~/.config . -v
+stow -t ~ shell
+stow -t ~ editor
