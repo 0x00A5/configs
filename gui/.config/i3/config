@@ -173,6 +173,9 @@ bindsym $mod+r mode "resize"
 # Keybinding to lock screen
 bindsym Control+Mod1+l exec "xflock4"
 
+# Browser
+bindsym Control+Mod1+b exec "firefox"
+
 # ---------------------------------
 # UI
 # ---------------------------------
