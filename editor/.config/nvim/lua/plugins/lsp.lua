@@ -9,59 +9,39 @@ return {
 			-- Setup lsp statusline
 			local lsp_status = require('lsp-status')
 			lsp_status.register_progress()
-			-- Setup language servers.
-			local lspconfig = require('lspconfig')
 
-			-- Rust
-			lspconfig.rust_analyzer.setup {
-				-- lsp status
+			-- Setup language servers.
+			-- C (clangd)
+			vim.lsp.config("clangd", {
 				on_attach = lsp_status.on_attach,
 				capabilities = lsp_status.capabilities,
-				-- Server-specific settings. See `:help lspconfig-setup`
+				cmd = { "clangd", "--background-index" },
+				capabilities = require("cmp_nvim_lsp").default_capabilities(),
+			})
+			vim.lsp.enable("clangd")
+
+			-- Rust (rust-analyzer)
+			vim.lsp.config("rust_analyzer", {
+				on_attach = lsp_status.on_attach,
+				capabilities = lsp_status.capabilities,
 				settings = {
 					["rust-analyzer"] = {
-						cargo = {
-							features = "all",
-						},
-						imports = {
-							group = {
-								enable = false,
-							},
-						},
-						completion = {
-							postfix = {
-								enable = false,
-							},
-						},
+						cargo = { features = "all" },
+						imports = { group = { enable = false } },
+						completion = { postfix = { enable = false } },
 					},
 				},
-			}
+			})
+			vim.lsp.enable("rust_analyzer")
 
-			-- Python LSP
-			lspconfig.pyright.setup {
-				-- lsp status
-				on_attach = lsp_status.on_attach,
-				capabilities = lsp_status.capabilities,
-			}
+			-- Ruff for Python
+			if vim.fn.executable('ruff') == 1 then
+				vim.lsp.enable('ruff')
+			end
 
 			-- Bash LSP
-			local configs = require 'lspconfig.configs'
-			if not configs.bash_lsp and vim.fn.executable('bash-language-server') == 1 then
-				configs.bash_lsp = {
-					default_config = {
-						cmd = { 'bash-language-server', 'start' },
-						filetypes = { 'sh' },
-						root_dir = require('lspconfig').util.find_git_ancestor,
-						init_options = {
-							settings = {
-								args = {}
-							}
-						}
-					}
-				}
-			end
-			if configs.bash_lsp then
-				lspconfig.bash_lsp.setup {}
+			if vim.fn.executable('bash-language-server') == 1 then
+				vim.lsp.enable('bashls')
 			end
 
 			-- Global mappings.
