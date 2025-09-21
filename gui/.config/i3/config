@@ -174,7 +174,7 @@ bindsym $mod+r mode "resize"
 bindsym Control+Mod1+l exec "xflock4"
 
 # Browser
-bindsym Control+Mod1+b exec "firefox"
+bindsym Control+Mod1+b exec "librewolf"
 
 # ---------------------------------
 # UI
