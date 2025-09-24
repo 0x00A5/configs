@@ -1,6 +1,8 @@
 /.git
 /bootstrap.sh
-/polybar
 /.xinitrc
 /.devcontainer
-/i3
+/shell/.config/fish/completions
+/shell/.config/fish/functions/fisher.fish
+/shell/.config/fish/themes
+/shell/.config/fish/fish_plugins
