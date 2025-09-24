@@ -4,9 +4,9 @@ TERM = "xterm-256color"
 
 [window]
 startup_mode = "Maximized"
-padding.x = 10
-padding.y = 10
-opacity = 0.8
+padding.x = 5
+padding.y = 5
+opacity = 0.9
 blur = true
 
 [font]
@@ -17,8 +17,9 @@ size = 12
 bindings = [{ key = "F12", action = "ToggleFullscreen" }]
 
 [general]
+# Check README at https://github.com/catppuccin/alacritty
 import = [
-    "~/.config/alacritty/alacritty-theme/themes/gruvbox_dark.toml"
+    "~/.config/alacritty/themes/catppuccin-mocha.toml"
 ]
 
 [terminal.shell]

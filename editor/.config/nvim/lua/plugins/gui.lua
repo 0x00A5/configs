@@ -16,11 +16,12 @@ return {
 	},
 	-- main color scheme
 	{
-		"wincent/base16-nvim",
+		'catppuccin/nvim', 
+		name = 'catppuccin', 
 		lazy = false, -- load at start
 		priority = 1000, -- load first
 		config = function()
-			vim.cmd([[colorscheme gruvbox-material-dark-hard]])
+			vim.cmd([[colorscheme catppuccin-mocha]])
 			vim.o.background = 'dark'
 			-- Make comments more prominent -- they are important.
 			local bools = vim.api.nvim_get_hl(0, { name = 'Boolean' })
