@@ -38,7 +38,7 @@ return {
 			-- no need to also show mode in cmd line when we have bar
 			vim.o.showmode = false
 			vim.g.lightline = {
-				colorscheme = 'darcula',
+				colorscheme = 'catppuccin',
 				active = {
 					left = {
 						{ 'mode', 'paste' },
