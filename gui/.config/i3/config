@@ -184,9 +184,9 @@ bindsym Control+Mod1+b exec "librewolf"
 default_border pixel 0
 
 # Gaps
-for_window [class="^.*"] border pixel 4
-#gaps inner 3
-#gaps outer 3
+for_window [class="^.*"] border pixel 3
+gaps inner 0
+gaps outer 0
 
 # Random wallpapers
 exec_always --no-startup-id feh --randomize --bg-fill ~/Documents/wallpapers/*
