@@ -22,6 +22,7 @@
 		},
 		"ghcr.io/devcontainers-extra/features/protoc:1": {},
 		"ghcr.io/kreemer/features/stow:1": {},
-		"ghcr.io/devcontainers-extra/features/ripgrep:1": {}
+		"ghcr.io/devcontainers-extra/features/ripgrep:1": {},
+		"ghcr.io/devcontainers-extra/features/neovim-apt-get:1": {}
 	}
 }
