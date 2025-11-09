@@ -2,12 +2,10 @@
 	"name": "Rust",
 	"build": {
 		"args": {
-			"VARIANT": "bullseye"
 		},
 		"dockerfile": "Dockerfile"
 	},
 	"features": {
-		"ghcr.io/devcontainers/features/docker-in-docker:1": {},
 		"ghcr.io/devcontainers-extra/features/fish-apt-get:1": {},
 		"ghcr.io/devcontainers/features/common-utils:2": {
 			"username": "vscode",
@@ -15,7 +13,10 @@
 			"userGid": "1000",
 			"upgradePackages": "true"
 		},
-		"ghcr.io/devcontainers/features/rust:1": {},
+		"ghcr.io/devcontainers/features/rust:1": {
+		  "version": "stable,nightly-2025-08-01",
+		  "components": "rustfmt,clippy,rust-analyzer"
+		},
 		"ghcr.io/devcontainers/features/git:1": {
 			"version": "latest",
 			"ppa": "false"
@@ -23,6 +24,11 @@
 		"ghcr.io/devcontainers-extra/features/protoc:1": {},
 		"ghcr.io/kreemer/features/stow:1": {},
 		"ghcr.io/devcontainers-extra/features/ripgrep:1": {},
-		"ghcr.io/devcontainers-extra/features/neovim-apt-get:1": {}
-	}
+		"ghcr.io/devcontainers-extra/features/fzf:1": {}
+	},
+	"containerEnv": {
+		"RUSTUP_HOME": "/home/vscode/.rustup",
+		"CARGO_HOME": "/home/vscode/.cargo"
+	},
+	"postCreateCommand": "rustup component add rust-analyzer --toolchain=nightly-2025-08-01"
 }
