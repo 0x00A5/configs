@@ -1,32 +1,65 @@
-# See here for image contents: https://github.com/devcontainers/images/blob/main/src/rust/.devcontainer/Dockerfile
+FROM ubuntu:24.04
 
-# [Choice] Debian OS version (use bookworm, or bullseye on local arm64/Apple Silicon): bookworm, buster, bullseye
-ARG VARIANT="bookworm"
-FROM mcr.microsoft.com/devcontainers/rust:1-${VARIANT}
+ENV DEBIAN_FRONTEND=noninteractive
+SHELL ["/bin/bash", "-c"]
 
-ENV RUSTUP_HOME=/home/vscode/.rustup
-ENV CARGO_HOME=/home/vscode/.cargo
+# Create your own user
+ARG USERNAME=yuan
+ARG USER_UID=1001
+ARG USER_GID=1001
 
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends \
-	clang \
-	ca-certificates \
-	git \
-    build-essential \
-    cmake \
-    unzip \
-    ninja-build \
-    gettext \
-    curl
+RUN groupadd --gid $USER_GID $USERNAME \
+    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME -s /usr/bin/fish \
+    && apt-get update && apt-get install -y --no-install-recommends \
+        ca-certificates \
+        build-essential \
+        clang \
+        cmake \
+        unzip \
+        ninja-build \
+        gettext \
+        curl \
+        git \
+        fish \
+        ripgrep \
+        stow \
+        protobuf-compiler \
+        xz-utils \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install the latest neovim
+# ---------------------
+# Rust (stable + nightly)
+# ---------------------
+ENV RUSTUP_HOME=/home/${USERNAME}/.rustup
+ENV CARGO_HOME=/home/${USERNAME}/.cargo
+ENV PATH=${CARGO_HOME}/bin:${PATH}
+
+RUN mkdir -p ${RUSTUP_HOME} ${CARGO_HOME} \
+    && chown -R ${USERNAME}:${USERNAME} /home/${USERNAME}
+
+USER ${USERNAME}
+WORKDIR /home/${USERNAME}
+
+# Install rustup, stable & nightly, with components
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y \
+    && rustup toolchain install stable nightly-2025-08-01 \
+    && rustup component add rustfmt clippy rust-analyzer --toolchain stable \
+    && rustup component add rustfmt clippy rust-analyzer --toolchain nightly-2025-08-01
+
+# ---------------------
+# Neovim (latest release)
+# ---------------------
 RUN curl -fSL https://github.com/neovim/neovim/releases/latest/download/nvim-linux-arm64.tar.gz -o nvim-linux-arm64.tar.gz \
-    && mkdir -p /home/vscode/.local/share/ \
-    && tar xzvf nvim-linux-arm64.tar.gz -C /home/vscode/.local/share/ \
-	&& mkdir -p /home/vscode/.local/bin/ \
-    && ln -sf /home/vscode/.local/share/nvim-linux-arm64/bin/nvim /home/vscode/.local/bin/nvim
+    && mkdir -p /home/${USERNAME}/.local/share/ \
+    && tar xzvf nvim-linux-arm64.tar.gz -C /home/${USERNAME}/.local/share/ \
+	&& mkdir -p /home/${USERNAME}/.local/bin/ \
+    && ln -sf /home/${USERNAME}/.local/share/nvim-linux-arm64/bin/nvim /home/${USERNAME}/.local/bin/nvim
 
-# fzf
-RUN git clone --depth 1 https://github.com/junegunn/fzf.git /home/vscode/.fzf
+# ---------------------
+# fzf (for your ~/.fzf setup)
+# ---------------------
+RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
-RUN chown -R vscode:vscode /home/vscode /usr/local /tmp /var/tmp /opt
+# Make sure your local bin is on PATH
+ENV PATH="/home/${USERNAME}/.local/bin:${PATH}"
+
