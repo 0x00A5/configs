@@ -21,6 +21,9 @@ return {
 		lazy = false, -- load at start
 		priority = 1000, -- load first
 		config = function()
+			require("catppuccin").setup({
+				auto_integrations = true,
+			})
 			vim.cmd([[colorscheme catppuccin-mocha]])
 			vim.o.background = 'dark'
 			-- Make comments more prominent -- they are important.
@@ -96,4 +99,15 @@ return {
 			vim.g.matchup_matchparen_offscreen = { method = "popup" }
 		end
 	},
+	{
+		'shortcuts/no-neck-pain.nvim',
+		config = function()
+			require('no-neck-pain').setup({
+				width = 120,
+				autocmds = {
+					enableOnTabEnter = true,
+				}
+			})
+		end
+	}
 }
