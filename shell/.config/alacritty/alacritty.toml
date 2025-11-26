@@ -23,5 +23,9 @@ import = [
 ]
 
 [terminal.shell]
-program = "fish"
-args = ["-l"]
+program = "/bin/zsh"
+args = [
+	"-l",
+	"-c",
+	"fish"
+]
