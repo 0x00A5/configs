@@ -27,8 +27,8 @@ return {
 				settings = {
 					["rust-analyzer"] = {
 						cargo = { features = "all" },
-						--cargo = { features = "all", target = "x86_64-unknown-linux-musl" },
-						--cargo = { features = "all", target = "aarch64-unknown-linux-musl" },
+						--cargo = { features = "all", target = "x86_64-unknown-linux-gnu" },
+						--cargo = { features = "all", target = "aarch64-unknown-linux-gnu" },
 						imports = { group = { enable = false } },
 						completion = { postfix = { enable = false } },
 					},
