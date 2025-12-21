@@ -66,6 +66,8 @@ return {
 					local opts = { buffer = ev.buf }
 					vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
 					vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+					-- go to definition in a new tab split
+					vim.keymap.set('n', '<leader>gd', '<cmd>tab split | lua vim.lsp.buf.definition()<cr>')
 					vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
 					vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
 					vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
