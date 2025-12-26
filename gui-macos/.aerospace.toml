@@ -105,7 +105,7 @@ on-mode-changed = []
     #     activate
     # end tell'
     # '''
-	alt-enter = "exec-and-forget alacritty"
+	alt-enter = "exec-and-forget /bin/zsh -lc 'alacritty'"
 	alt-shift-q = "close"
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#layout
