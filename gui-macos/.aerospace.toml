@@ -13,8 +13,8 @@ after-startup-command = []
 start-at-login = true
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
-enable-normalization-flatten-containers = true
-enable-normalization-opposite-orientation-for-nested-containers = true
+enable-normalization-flatten-containers = false
+enable-normalization-opposite-orientation-for-nested-containers = false
 
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # The 'accordion-padding' specifies the size of accordion padding
@@ -111,8 +111,8 @@ on-mode-changed = []
 	alt-shift-q = "close"
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-    alt-b = 'layout tiles horizontal'
-    alt-v = 'layout tiles vertical'
+    alt-b = 'split horizontal'
+    alt-v = 'split vertical'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#focus
     alt-h = 'focus left'
