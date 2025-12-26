@@ -69,7 +69,8 @@ on-mode-changed = []
     inner.horizontal = 5
     inner.vertical =   5
     outer.left =       0
-    outer.bottom =     0
+	# apparently 0 leaves a small gap, but -1 works :)
+    outer.bottom =     -1
     outer.top =        0
     outer.right =      0
 
