@@ -106,6 +106,7 @@ on-mode-changed = []
     # end tell'
     # '''
 	alt-enter = "exec-and-forget /bin/zsh -lc 'alacritty'"
+	ctrl-cmd-b = "exec-and-forget open -a \"Firefox\""
 	alt-shift-q = "close"
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#layout
