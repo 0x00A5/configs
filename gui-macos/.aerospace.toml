@@ -106,7 +106,7 @@ on-mode-changed = []
     #     activate
     # end tell'
     # '''
-	alt-enter = "exec-and-forget ~/.cargo/bin/alacritty"
+	alt-enter = "exec-and-forget open -na /Applications/Alacritty.app/Contents/MacOS/alacritty"
 	ctrl-cmd-b = "exec-and-forget /Applications/Firefox.app/Contents/MacOS/firefox"
 	alt-shift-q = "close"
 
