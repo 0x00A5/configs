@@ -32,3 +32,4 @@ SETUVAR fish_pager_color_description:6c7086
 SETUVAR fish_pager_color_prefix:f5c2e7
 SETUVAR fish_pager_color_progress:6c7086
 SETUVAR --export fish_user_paths:/usr/local/go/bin
+SETUVAR --export fish_user_paths:~/.local/bin
