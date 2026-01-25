@@ -144,6 +144,12 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 
+# Audio volume control
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute        exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+
 # Resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -186,11 +192,8 @@ default_border pixel 0
 
 # Gaps
 for_window [class="^.*"] border pixel 3
-gaps inner 3
-gaps outer 3
-
-# Load X resources
-exec_always --no-startup-id xrdb -merge ~/.Xresources
+gaps inner 2
+gaps outer 2
 
 # Random wallpapers
 exec_always --no-startup-id feh --randomize --bg-fill ~/Documents/wallpapers/*
