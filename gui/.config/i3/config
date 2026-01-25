@@ -195,9 +195,6 @@ for_window [class="^.*"] border pixel 3
 gaps inner 2
 gaps outer 2
 
-# xsettingsd
-exec --no-startup-id xsettingsd
-
 # Random wallpapers
 exec_always --no-startup-id feh --randomize --bg-fill ~/Documents/wallpapers/*
 

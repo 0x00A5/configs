@@ -38,19 +38,22 @@ export QT_IM_MODULE=fcitx5
 export XMODIFIERS=@im=fcitx5
 export SDL_IM_MODULE=fcitx
 
-# Keyboard repeat delay
-xset r rate 200 30
-
 # Screensaver
 xset s 180 180
 
 # Standby 10 min
 xset dpms 300 600 900
 
+# System theme
+xsettingsd &
+
+# Keyboard repeat delay
+xset r rate 200 30
+
 # System tray items
 fcitx5 & # Input methods fcitx
 blueman-applet & # Bluetooth
-cbatticon & # Battery
+batticonplus & # Battery
 pasystray & # Pulse audio
 
 # exec startxfce4
