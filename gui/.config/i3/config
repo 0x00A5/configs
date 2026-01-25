@@ -26,7 +26,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l blur
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -47,9 +47,6 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
-
-# terminal transparent
-exec "picom -f &"
 
 # ---------------------------------
 # Keybindings
@@ -143,6 +140,10 @@ bindsym $mod+Shift+r restart
 # Exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+# Brightness control
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+
 # Resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -171,7 +172,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Keybinding to lock screen
-bindsym Control+Mod1+l exec "xflock4"
+bindsym Control+Mod1+l exec betterlockscreen -l blur
 
 # Browser
 bindsym Control+Mod1+b exec "librewolf"
@@ -185,20 +186,21 @@ default_border pixel 0
 
 # Gaps
 for_window [class="^.*"] border pixel 3
-gaps inner 0
-gaps outer 0
+gaps inner 3
+gaps outer 3
+
+# Load X resources
+exec_always --no-startup-id xrdb -merge ~/.Xresources
 
 # Random wallpapers
 exec_always --no-startup-id feh --randomize --bg-fill ~/Documents/wallpapers/*
 
-# ---------------------------------
-# XFCE
-# ---------------------------------
+# Polybar
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
-# file manager 
-bindsym Control+Mod1+f exec "thunar"
+# Notification
+exec --no-startup-id dunst
 
-# floating rules for XFCE elements
-for_window [class="xfce4-panel"] floating enable, border none, sticky enable
-for_window [window_type="dialog"] floating enable
+# Picom
+exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
 
