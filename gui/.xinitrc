@@ -53,7 +53,6 @@ xset r rate 200 30
 # System tray items
 fcitx5 & # Input methods fcitx
 blueman-applet & # Bluetooth
-batticonplus & # Battery
 pasystray & # Pulse audio
 
 # exec startxfce4
