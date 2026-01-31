@@ -41,8 +41,8 @@ export SDL_IM_MODULE=fcitx
 # Screensaver
 xset s 180 180
 
-# Standby 10 min
-xset dpms 300 600 900
+# Standby after 3 min, suspend after 5 min, off after 10 min
+xset dpms 180 300 600
 
 # System theme
 xsettingsd &
