@@ -202,9 +202,10 @@ gaps outer 0
 
 # Lock screen on idle and before sleep
 exec "swayidle -w \
-    timeout 300 'swaylock -f -c 000000' \
-    timeout 600 'swaymsg \"output * power off\"' \
+    timeout 180 'swaylock -f -c 000000' \
+    timeout 181 'swaymsg \"output * power off\"' \
     resume 'swaymsg \"output * power on\"' \
+	timeout 300 'systemctl suspend' \
     before-sleep 'swaylock -f -c 000000'"
 
 # Random wallpapers
