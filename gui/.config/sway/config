@@ -137,9 +137,6 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 # Reload the configuration file
 bindsym $mod+Shift+c reload
 
-# Restart Sway inplace (preserves your layout/session)
-bindsym $mod+Shift+r restart
-
 # Exit Sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit Sway? This will end your Wayland session.' -b 'Yes, exit Sway' 'swaymsg exit'
 
@@ -180,7 +177,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Keybinding to lock screen
-bindsym Control+Mod1+l exec swaylock -f
+bindsym Control+Mod1+l exec sh -c 'img="$(find "$HOME/Documents/wallpapers" -type f | shuf -n 1)"; [ -n "$img" ] && exec swaylock -f -i "$img" --scaling fill'
 
 # Browser
 bindsym Control+Mod1+b exec librewolf
@@ -200,9 +197,9 @@ gaps outer 0
 
 # Lock screen on idle and before sleep
 exec swayidle -w \
-    timeout 300 'swaylock -f' \
+    timeout 300 'sh -c '\''img="$(find "$HOME/Documents/wallpapers" -type f | shuf -n 1)"; [ -n "$img" ] && exec swaylock -f -i "$img" --scaling fill'\''' \
     timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-    before-sleep 'swaylock -f'
+    before-sleep 'sh -c '\''img="$(find "$HOME/Documents/wallpapers" -type f | shuf -n 1)"; [ -n "$img" ] && exec swaylock -f -i "$img" --scaling fill'\'''
 
 # Random wallpapers
 exec_always --no-startup-id sh -c 'wallpaper="$(find "$HOME/Documents/wallpapers" -type f | shuf -n 1)"; [ -n "$wallpaper" ] && exec swaybg -i "$wallpaper" -m fill'

@@ -2,8 +2,6 @@
  * Waybar
  * ---------------------------------
  *
- * Standalone styling for the translated Waybar config.
- * Kept self-contained instead of depending on the old Polybar theme files.
  *
  * --------------------------------- */
 
@@ -25,7 +23,7 @@
   border: none;
   border-radius: 0;
   font-family: "JetBrainsMono Nerd Font", "Source Han Sans CN", monospace;
-  font-size: 14px;
+  font-size: 17px;
   min-height: 0;
 }
 
