@@ -110,7 +110,7 @@ tooltip {
 }
 
 #pulseaudio {
-  color: @mauve;
+  color: @yellow;
 }
 
 #cpu {
@@ -118,7 +118,7 @@ tooltip {
 }
 
 #memory {
-  color: @yellow;
+  color: @mauve;
 }
 
 #battery {

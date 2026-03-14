@@ -13,8 +13,6 @@
       "sway/workspaces",
       "tray",
       "pulseaudio",
-      "cpu",
-      "memory",
       "battery#bat0",
       "battery#bat1",
       "clock"
@@ -23,7 +21,7 @@
     // Arch icon
     "custom/arch": {
       "format": "",
-      "tooltip": false
+	  "tooltip-format": "BTW..."
     },
 
 	// Taskbar
