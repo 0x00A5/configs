@@ -182,7 +182,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Keybinding to lock screen
-bindsym Control+Mod1+l exec sh -c 'img="$(find "$HOME/Documents/wallpapers" -type f | shuf -n 1)"; [ -n "$img" ] && exec swaylock -f -i "$img" --scaling fill'
+bindsym Control+Mod1+l exec sh -c 'exec swaylock -f -c 000000'
 
 # Browser
 bindsym Control+Mod1+b exec librewolf
@@ -201,13 +201,14 @@ gaps inner 0
 gaps outer 0
 
 # Lock screen on idle and before sleep
-exec swayidle -w \
-    timeout 300 'sh -c '\''img="$(find "$HOME/Documents/wallpapers" -type f | shuf -n 1)"; [ -n "$img" ] && exec swaylock -f -i "$img" --scaling fill'\''' \
-    timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-    before-sleep 'sh -c '\''img="$(find "$HOME/Documents/wallpapers" -type f | shuf -n 1)"; [ -n "$img" ] && exec swaylock -f -i "$img" --scaling fill'\'''
+exec "swayidle -w \
+    timeout 300 'swaylock -f -c 000000' \
+    timeout 600 'swaymsg \"output * power off\"' \
+    resume 'swaymsg \"output * power on\"' \
+    before-sleep 'swaylock -f -c 000000'"
 
 # Random wallpapers
-exec_always --no-startup-id sh -c 'wallpaper="$(find "$HOME/Documents/wallpapers" -type f | shuf -n 1)"; [ -n "$wallpaper" ] && exec swaybg -i "$wallpaper" -m fill'
+exec --no-startup-id sh -c 'wallpaper="$(find "$HOME/Documents/wallpapers" -type f | shuf -n 1)"; [ -n "$wallpaper" ] && exec swaybg -i "$wallpaper" -m fill'
 
 # Input methods
 exec fcitx5

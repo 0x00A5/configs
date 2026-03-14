@@ -7,7 +7,7 @@
 
     "modules-left": [
       "custom/arch",
-      "sway/window"
+	  "wlr/taskbar"
     ],
     "modules-right": [
       "sway/workspaces",
@@ -26,11 +26,15 @@
       "tooltip": false
     },
 
-    // Focused window title
-    "sway/window": {
-      "max-length": 17,
-      "separate-outputs": true
-    },
+	// Taskbar
+	"wlr/taskbar": {
+      "format": "{icon}",
+      "icon-size": 14,
+      "icon-theme": "Numix-Circle",
+      "tooltip-format": "{title}",
+      "on-click": "activate",
+      "on-click-middle": "close"
+	},
 
     // Sway workspaces
     "sway/workspaces": {
@@ -49,7 +53,8 @@
       "format": " {volume}%",
       "format-muted": "󰖁",
       "scroll-step": 5,
-      "tooltip": false
+      "tooltip": false,
+	  "on-click": "pavucontrol"
     },
 
     // CPU usage with a stepped bar, matching Polybar's ramp idea
@@ -110,6 +115,7 @@
     // Date and time
     "clock": {
       "interval": 1,
+      "tooltip": false,
       "format": " {:%Y-%m-%d %H:%M}",
       "format-alt": "{:%H:%M}"
     }
