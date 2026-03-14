@@ -2,38 +2,40 @@
 # Dependencies
 # ---------------------------------
 #
-# xss-lock
+# sway
+# swaylock
+# swayidle
+# swaybg
+# waybar
+# wofi
 # alacritty
-# rofi
 # librewolf
-# betterlockscreen
-# feh
-# picom
-# polybar
+# mako
 #
 # ---------------------------------
 
 # ---------------------------------
-# i3 Basics
+# Sway Basics
 # ---------------------------------
 
 # Super key as mod
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
+# is used in the bar configuration.
 font pango:monospace 10
 
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l --blur 0.9
+# Keyboard repeat delay and rate
+input type:keyboard {
+    repeat_delay 200
+    repeat_rate 30
+}
 
 # Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+floating_modifier $mod normal
 
-# Move tiling windows via drag & drop by left-clicking into the title bar,
-# or left-clicking anywhere into the window while holding the floating modifier.
-tiling_drag modifier titlebar
+# Move focus when the mouse moves across windows
+focus_follows_mouse yes
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -58,15 +60,14 @@ bindsym $mod+Return exec alacritty
 # Kill focused window
 bindsym $mod+Shift+q kill
 
-# A more modern dmenu replacement is rofi:
-bindcode $mod+40 exec "rofi -modi drun,run -show drun"
+# A Wayland-native application launcher
+bindsym $mod+d exec wofi --show drun
 
 # Change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
-focus_follows_mouse yes
 
 # Alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -135,10 +136,12 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # Reload the configuration file
 bindsym $mod+Shift+c reload
-# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+
+# Restart Sway inplace (preserves your layout/session)
 bindsym $mod+Shift+r restart
-# Exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# Exit Sway (logs you out of your Wayland session)
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit Sway? This will end your Wayland session.' -b 'Yes, exit Sway' 'swaymsg exit'
 
 # Brightness control
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
@@ -147,40 +150,40 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 # Audio volume control
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute        exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+    # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+    # Pressing left will shrink the window's width.
+    # Pressing right will grow the window's width.
+    # Pressing up will shrink the window's height.
+    # Pressing down will grow the window's height.
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
 
-        # Same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+    # Same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
-        # Back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+    # Back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
 
 # Keybinding to lock screen
-bindsym Control+Mod1+l exec betterlockscreen -l --blur 0.9
+bindsym Control+Mod1+l exec swaylock -f
 
 # Browser
-bindsym Control+Mod1+b exec "librewolf"
+bindsym Control+Mod1+b exec librewolf
 
 # ---------------------------------
 # UI
@@ -190,19 +193,29 @@ bindsym Control+Mod1+b exec "librewolf"
 default_border pixel 0
 
 # Gaps
-for_window [class="^.*"] border pixel 3
+for_window [app_id=".*"] border pixel 3
+for_window [class=".*"] border pixel 3
 gaps inner 0
 gaps outer 0
 
+# Lock screen on idle and before sleep
+exec swayidle -w \
+    timeout 300 'swaylock -f' \
+    timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -f'
+
 # Random wallpapers
-exec_always --no-startup-id feh --randomize --bg-fill ~/Documents/wallpapers/*
+exec_always --no-startup-id sh -c 'wallpaper="$(find "$HOME/Documents/wallpapers" -type f | shuf -n 1)"; [ -n "$wallpaper" ] && exec swaybg -i "$wallpaper" -m fill'
 
-# Polybar
-exec_always --no-startup-id ~/.config/polybar/scripts/launch.sh
+# Input methods
+exec fcitx5
 
-# Notification
-exec --no-startup-id dunst
+# System tray items
+exec blueman-applet
+exec pasystray
 
-# Picom
-exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
+# Waybar
+exec waybar
 
+# Notifications
+exec mako

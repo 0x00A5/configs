@@ -1,0 +1,121 @@
+/* ---------------------------------
+ * Waybar
+ * ---------------------------------
+ *
+ * Standalone styling for the translated Waybar config.
+ * Kept self-contained instead of depending on the old Polybar theme files.
+ *
+ * --------------------------------- */
+
+@define-color base rgba(30, 30, 46, 0.96);
+@define-color mantle rgba(24, 24, 37, 0.98);
+@define-color surface0 #313244;
+@define-color surface2 #585b70;
+@define-color text #cdd6f4;
+@define-color subtext0 #a6adc8;
+@define-color blue #89b4fa;
+@define-color green #a6e3a1;
+@define-color yellow #f9e2af;
+@define-color teal #94e2d5;
+@define-color red #f38ba8;
+@define-color mauve #cba6f7;
+@define-color rosewater #f5e0dc;
+
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font", "Source Han Sans CN", monospace;
+  font-size: 14px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: @base;
+  color: @text;
+  border: 3px solid @mantle;
+}
+
+tooltip {
+  background: @mantle;
+  border: 2px solid @surface0;
+  color: @text;
+}
+
+#custom-arch,
+#window,
+#workspaces,
+#tray,
+#cpu,
+#memory,
+#battery,
+#clock {
+  margin: 4px 0;
+  padding: 0 10px;
+}
+
+#custom-arch {
+  color: @blue;
+  font-size: 18px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+#window {
+  color: @mauve;
+}
+
+#workspaces {
+  padding: 0 4px;
+}
+
+#workspaces button {
+  color: @subtext0;
+  background: transparent;
+  padding: 0 8px;
+  margin: 4px 2px;
+}
+
+#workspaces button:hover {
+  background: @surface0;
+  color: @text;
+  box-shadow: inherit;
+  text-shadow: inherit;
+}
+
+#workspaces button.visible,
+#workspaces button.active {
+  background: @surface2;
+  color: @text;
+}
+
+#workspaces button.urgent {
+  background: @red;
+  color: @mantle;
+}
+
+#tray {
+  padding-right: 14px;
+}
+
+#cpu {
+  color: @blue;
+}
+
+#memory {
+  color: @yellow;
+}
+
+#battery {
+  color: @teal;
+}
+
+#battery.warning,
+#battery.critical,
+#battery.urgent {
+  color: @red;
+}
+
+#clock {
+  color: @rosewater;
+  padding-right: 12px;
+}
