@@ -12,6 +12,7 @@
     "modules-right": [
       "sway/workspaces",
       "tray",
+      "pulseaudio",
       "cpu",
       "memory",
       "battery#bat0",
@@ -41,6 +42,14 @@
     // System tray
     "tray": {
       "spacing": 10
+    },
+
+    // Audio volume
+    "pulseaudio": {
+      "format": " {volume}%",
+      "format-muted": "󰖁",
+      "scroll-step": 5,
+      "tooltip": false
     },
 
     // CPU usage with a stepped bar, matching Polybar's ramp idea

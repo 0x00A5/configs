@@ -43,6 +43,7 @@ tooltip {
 #window,
 #workspaces,
 #tray,
+#pulseaudio,
 #cpu,
 #memory,
 #battery,
@@ -93,6 +94,10 @@ tooltip {
 
 #tray {
   padding-right: 14px;
+}
+
+#pulseaudio {
+  color: @mauve;
 }
 
 #cpu {
