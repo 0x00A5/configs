@@ -11,6 +11,7 @@
 # alacritty
 # librewolf
 # mako
+# kanshi
 #
 # ---------------------------------
 
@@ -222,3 +223,6 @@ exec waybar
 
 # Notifications
 exec mako
+
+# Display
+exec kanshi
