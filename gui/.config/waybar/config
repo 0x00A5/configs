@@ -31,7 +31,8 @@
       "icon-theme": "Numix-Circle",
       "tooltip-format": "{title}",
       "on-click": "activate",
-      "on-click-middle": "close"
+      "on-click-middle": "close",
+	  "ignore-list": []
 	},
 
     // Sway workspaces
