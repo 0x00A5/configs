@@ -9,6 +9,7 @@
 # waybar
 # wofi
 # alacritty
+# foot
 # librewolf
 # mako
 # kanshi
@@ -61,7 +62,7 @@ set $ws10 "10"
 # ---------------------------------
 
 # Start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec foot 
 
 # Kill focused window
 bindsym $mod+Shift+q kill
