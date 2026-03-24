@@ -3,27 +3,22 @@ return {
 	{
 		'neovim/nvim-lspconfig',
 		dependencies = {
-			'nvim-lua/lsp-status.nvim',
+			"hrsh7th/cmp-nvim-lsp",
 		},
 		config = function()
-			-- Setup lsp statusline
-			local lsp_status = require('lsp-status')
-			lsp_status.register_progress()
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			-- Setup language servers.
 			-- C (clangd)
 			vim.lsp.config("clangd", {
-				on_attach = lsp_status.on_attach,
-				capabilities = lsp_status.capabilities,
 				cmd = { "clangd", "--background-index" },
-				capabilities = require("cmp_nvim_lsp").default_capabilities(),
+				capabilities = capabilities,
 			})
 			vim.lsp.enable("clangd")
 
 			-- Rust (rust-analyzer)
 			vim.lsp.config("rust_analyzer", {
-				on_attach = lsp_status.on_attach,
-				capabilities = lsp_status.capabilities,
+				capabilities = capabilities,
 				settings = {
 					["rust-analyzer"] = {
 						cargo = { features = "all" },

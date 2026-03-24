@@ -35,75 +35,76 @@ return {
 		end
 	},
 	{
-		'itchyny/lightline.vim',
+		'nvim-lualine/lualine.nvim',
 		lazy = false, -- also load at start since it's UI
+		dependencies = {
+			'nvim-tree/nvim-web-devicons',
+		},
 		config = function()
 			-- no need to also show mode in cmd line when we have bar
 			vim.o.showmode = false
-			vim.g.lightline = {
-				colorscheme = 'catppuccin',
-				active = {
-					left = {
-						{ 'mode', 'paste' },
-						{ 'readonly', 'filename', 'modified' }
-					},
-					right = {
-						{ 'lineinfo' },
-						{ 'percent' },
-						{ 'fileencoding', 'filetype' },
-						{ 'lspstatus' },
-					},
-				},
-				component_function = {
-					filename = 'LightlineFilename',
-					lspstatus = 'LspStatus',
-				},
-			}
-			function LightlineFilenameInLua(opts)
-				if vim.fn.expand('%:t') == '' then
-					return '[No Name]'
-				else
-					return vim.fn.getreg('%')
-				end
-			end
-			-- get lsp statusline
-			function LspStatusInLua()
-				if #vim.lsp.buf_get_clients() > 0 then
-					return require('lsp-status').status()
-				else
+
+			local function lsp_status()
+				local clients = vim.lsp.get_clients({ bufnr = 0 })
+				if #clients == 0 then
 					return ''
 				end
+
+				local msg = vim.lsp.status()
+				if msg ~= nil and msg ~= '' then
+					-- Escape statusline control chars from LSP progress text.
+					return msg:gsub('%%', '%%%%')
+				end
+
+				local names = {}
+				for _, client in ipairs(clients) do
+					table.insert(names, client.name)
+				end
+				return table.concat(names, ',')
 			end
-			-- https://github.com/itchyny/lightline.vim/issues/657
-			vim.api.nvim_exec(
-				[[
-				function! g:LspStatus()
-					return v:lua.LspStatusInLua()
-				endfunction
-				]],
-				true
-			)
-			vim.api.nvim_exec(
-				[[
-				function! g:LightlineFilename()
-					return v:lua.LightlineFilenameInLua()
-				endfunction
-				]],
-				true
-			)
+
+			require('lualine').setup({
+				options = {
+					theme = 'catppuccin-mocha',
+					globalstatus = true,
+					component_separators = { left = '|', right = '|' },
+					section_separators = { left = '', right = '' },
+				},
+				sections = {
+					lualine_a = { 'mode' },
+					lualine_b = { 'branch' },
+					lualine_c = {
+						{
+							'filename',
+							path = 1,
+						},
+						{
+							'diagnostics',
+						},
+					},
+					lualine_x = {
+							'encoding',
+							'filetype',
+							{
+								lsp_status,
+							},
+						},
+					lualine_y = { 'progress' },
+					lualine_z = { 'location' },
+				},
+			})
+
+			vim.api.nvim_create_autocmd({ 'LspAttach', 'LspDetach', 'LspProgress', 'DiagnosticChanged', 'BufEnter' }, {
+				callback = function()
+					require('lualine').refresh()
+				end,
+			})
 		end
 	},
 	{
 		'andymass/vim-matchup',
 		config = function()
 			vim.g.matchup_matchparen_offscreen = { method = "popup" }
-		end
-	},
-	{
-		'shortcuts/no-neck-pain.nvim',
-		config = function()
-			-- quick toggle
-			vim.keymap.set('n', '<leader>np', '<cmd>NoNeckPain<cr>')
 		end
 	}
 }
