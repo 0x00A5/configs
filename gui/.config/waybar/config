@@ -6,7 +6,7 @@
     "spacing": 8,
 
     "modules-left": [
-      "custom/arch",
+      "custom/power",
 	  "wlr/taskbar"
     ],
     "modules-right": [
@@ -18,11 +18,11 @@
       "clock"
     ],
 
-    // Arch icon
-    "custom/arch": {
-      "format": "",
-	  "tooltip-format": "BTW..."
-    },
+    // Power menu
+	"custom/power": {
+		"format": "⏻",
+		"on-click": "wlogout"
+	},
 
 	// Taskbar
 	"wlr/taskbar": {
