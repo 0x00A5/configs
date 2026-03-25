@@ -8,9 +8,8 @@
 # swaybg
 # waybar
 # wofi
-# alacritty
 # foot
-# librewolf
+# firefox
 # mako
 # kanshi
 #
@@ -187,7 +186,7 @@ bindsym $mod+r mode "resize"
 bindsym Control+Mod1+l exec sh -c 'exec swaylock -f -c 000000'
 
 # Browser
-bindsym Control+Mod1+b exec librewolf
+bindsym Control+Mod1+b exec firefox
 
 # ---------------------------------
 # UI
