@@ -37,12 +37,12 @@
   border: none;
   border-radius: 0;
   font-family: "JetBrainsMono Nerd Font", "Source Han Sans CN", monospace;
-  font-size: 17px;
+  font-size: 15px;
   min-height: 0;
 }
 
 window#waybar {
-  background: @black;
+  background: @base;
   color: @text;
   border: 3px solid @mantle;
 }
@@ -68,7 +68,7 @@ tooltip {
 
 #custom-power {
   color: @green;
-  font-size: 18px;
+  font-size: 15px;
   padding-left: 12px;
   padding-right: 12px;
 }
