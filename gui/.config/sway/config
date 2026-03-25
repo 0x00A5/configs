@@ -146,6 +146,10 @@ bindsym $mod+Shift+c reload
 # Exit Sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit Sway? This will end your Wayland session.' -b 'Yes, exit Sway' 'swaymsg exit'
 
+# On Asahi Linux, Fn is always on. 
+# In /etc/modprobe.d/hid_apple.conf,
+# add `options hid_apple fnmode=2`
+
 # Brightness control
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
