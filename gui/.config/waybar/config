@@ -15,6 +15,7 @@
       "pulseaudio",
       "battery#bat0",
       "battery#bat1",
+      "battery#bat3",
       "clock"
     ],
 
@@ -69,27 +70,6 @@
       "format": " {}%"
     },
 
-    // First battery on Asahi
-    "battery#bat0": {
-      "bat": "macsmc-battery",
-      "adapter": "AC",
-      "interval": 5,
-      "states": {
-        "warning": 10
-      },
-      "format": "{icon} {capacity}%",
-      "format-charging": "{icon}  {capacity}%",
-      "format-full": "{icon} {capacity}%",
-      "format-warning": "{icon} {capacity}%",
-      "format-icons": [
-        "",
-        "",
-        "",
-        "",
-        ""
-      ]
-    },
-
     // First battery
     "battery#bat0": {
       "bat": "BAT0",
@@ -114,6 +94,27 @@
     // Second battery
     "battery#bat1": {
       "bat": "BAT1",
+      "adapter": "AC",
+      "interval": 5,
+      "states": {
+        "warning": 10
+      },
+      "format": "{icon} {capacity}%",
+      "format-charging": "{icon}  {capacity}%",
+      "format-full": "{icon} {capacity}%",
+      "format-warning": "{icon} {capacity}%",
+      "format-icons": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+
+    // First battery on Asahi
+    "battery#bat3": {
+      "bat": "macsmc-battery",
       "adapter": "AC",
       "interval": 5,
       "states": {
