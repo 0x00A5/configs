@@ -6,7 +6,6 @@
     "spacing": 8,
 
     "modules-left": [
-      "custom/power",
 	  "wlr/taskbar"
     ],
     "modules-right": [
@@ -18,12 +17,6 @@
       "battery#bat3",
       "clock"
     ],
-
-    // Power menu
-	"custom/power": {
-		"format": "⏻",
-		"on-click": "wlogout"
-	},
 
 	// Taskbar
 	"wlr/taskbar": {
