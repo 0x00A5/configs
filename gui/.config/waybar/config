@@ -27,13 +27,15 @@
 
 	// Taskbar
 	"wlr/taskbar": {
-      "format": "{icon}",
-      "icon-size": 14,
-      "icon-theme": "Numix-Circle",
-      "tooltip-format": "{title}",
-      "on-click": "activate",
-      "on-click-middle": "close",
-	  "ignore-list": []
+		"format": "{icon}",
+		"icon-size": 14,
+		"icon-theme": "Numix-Circle",
+		"tooltip-format": "{title}",
+		"on-click": "activate",
+		"on-click-middle": "close",
+		"ignore-list": [
+			"foot"
+		]
 	},
 
     // Sway workspaces
