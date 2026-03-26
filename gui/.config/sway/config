@@ -22,9 +22,8 @@
 # Super key as mod
 set $mod Mod4
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar configuration.
-font pango:monospace 10
+# Font for window titles. Keep this aligned with the bar styling.
+font pango:JetBrainsMono Nerd Font 10
 
 # Keyboard repeat delay and rate
 input type:keyboard {
@@ -196,14 +195,22 @@ bindsym Control+Mod1+b exec firefox
 # UI
 # ---------------------------------
 
-# Hide title bar
-default_border pixel 0
+# Keep borders minimal but visible so focused windows match the Waybar accents.
+default_border pixel 3
+default_floating_border pixel 3
+smart_borders on
+smart_gaps on
+
+# Window colors
+# Order: border background text indicator child_border
+# With pixel borders, the border and child_border are the main visible parts.
+client.focused   #b4befe #313244 #cdd6f4 #89dceb #b4befe
+client.unfocused #45475a #313244 #a6adc8 #45475a #45475a
+client.urgent    #f38ba8 #f38ba8 #11111b #f38ba8 #f38ba8
 
 # Gaps
-for_window [app_id=".*"] border pixel 3
-for_window [class=".*"] border pixel 3
-gaps inner 0
-gaps outer 0
+gaps inner 3
+gaps outer 3
 
 # Lock screen on idle and before sleep
 exec "swayidle -w \

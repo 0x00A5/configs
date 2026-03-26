@@ -6,11 +6,12 @@
     "spacing": 8,
 
     "modules-left": [
+	  "sway/workspaces",
 	  "wlr/taskbar"
     ],
     "modules-right": [
-      "sway/workspaces",
       "tray",
+      "network",
       "pulseaudio",
       "battery#bat0",
       "battery#bat1",
@@ -41,6 +42,15 @@
     // System tray
     "tray": {
       "spacing": 10
+    },
+
+    // Wi-Fi status
+    "network": {
+      "interval": 5,
+      "format-wifi": "  {essid}",
+      "format-disconnected": "󰖪",
+      "tooltip-format-wifi": "{ifname} {ipaddr}/{cidr}\n{essid} {signalStrength}%",
+      "tooltip-format-disconnected": "Wi-Fi disconnected"
     },
 
     // Audio volume

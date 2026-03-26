@@ -44,7 +44,7 @@
 window#waybar {
   background: @base;
   color: @text;
-  border: 3px solid @mantle;
+  border: none;
 }
 
 tooltip {
@@ -55,33 +55,42 @@ tooltip {
 
 #window,
 #workspaces,
+#taskbar,
 #tray,
+#network,
 #pulseaudio,
 #cpu,
 #memory,
 #battery,
 #clock {
-  margin: 4px 0;
-  padding: 0 10px;
+  margin: 6px 4px;
+  padding: 0 14px;
+  border-radius: 12px;
+  min-height: 24px;
 }
 
 #window {
-  color: @mauve;
+  background: @surface1;
+  color: @text;
+  margin-left: 6px;
 }
 
 #workspaces {
-  padding: 0 4px;
+  background: @surface0;
+  color: @text;
+  padding: 0 6px;
 }
 
 #workspaces button {
-  color: @subtext0;
+  color: inherit;
   background: transparent;
-  padding: 0 8px;
+  padding: 0 10px;
   margin: 4px 2px;
+  border-radius: 8px;
 }
 
 #workspaces button:hover {
-  background: @surface0;
+  background: @surface2;
   color: @text;
   box-shadow: inherit;
   text-shadow: inherit;
@@ -89,42 +98,77 @@ tooltip {
 
 #workspaces button.visible,
 #workspaces button.active {
-  background: @surface2;
-  color: @text;
+  background: @lavender;
+  color: @crust;
 }
 
 #workspaces button.urgent {
   background: @red;
-  color: @mantle;
+  color: @crust;
+}
+
+#taskbar {
+  background: @surface2;
+  color: @text;
+}
+
+#taskbar button {
+  color: inherit;
+  background: transparent;
+  padding: 0 8px;
+  margin: 4px 2px;
+  border-radius: 8px;
+}
+
+#taskbar button:hover {
+  background: @overlay1;
+  color: @crust;
+}
+
+#taskbar button.active {
+  background: transparent;
+  color: inherit;
 }
 
 #tray {
-  padding-right: 14px;
+  background: @sky;
+  color: @crust;
+}
+
+#network {
+  background: @teal;
+  color: @crust;
 }
 
 #pulseaudio {
-  color: @yellow;
+  background: @flamingo;
+  color: @crust;
 }
 
 #cpu {
-  color: @blue;
+  background: @blue;
+  color: @crust;
 }
 
 #memory {
-  color: @mauve;
+  background: @mauve;
+  color: @crust;
 }
 
 #battery {
-  color: @teal;
+  background: @green;
+  color: @crust;
 }
 
 #battery.warning,
 #battery.critical,
 #battery.urgent {
-  color: @red;
+  background: @red;
+  color: @crust;
 }
 
 #clock {
-  color: @lavender;
-  padding-right: 12px;
+  background: @lavender;
+  color: @crust;
+  margin-right: 6px;
 }
