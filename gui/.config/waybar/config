@@ -49,6 +49,7 @@
       "interval": 5,
       "format-wifi": "  {essid}",
       "format-disconnected": "󰖪",
+	  "max-length": 18,
       "tooltip-format-wifi": "{ifname} {ipaddr}/{cidr}\n{essid} {signalStrength}%",
       "tooltip-format-disconnected": "Wi-Fi disconnected"
     },
