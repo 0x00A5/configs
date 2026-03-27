@@ -63,7 +63,7 @@ tooltip {
 #memory,
 #battery,
 #clock {
-  margin: 6px 4px;
+  margin: 6px 2px;
   padding: 0 14px;
   border-radius: 12px;
   min-height: 24px;
@@ -108,7 +108,7 @@ tooltip {
 }
 
 #taskbar {
-  background: @surface2;
+  background: @surface0;
   color: @text;
 }
 
