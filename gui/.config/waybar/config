@@ -47,7 +47,7 @@
     // Wi-Fi status
     "network": {
       "interval": 5,
-      "format-wifi": "",
+      "format-wifi": "  {essid}",
       "format-disconnected": "󰖪",
       "tooltip-format-wifi": "{ifname} {ipaddr}/{cidr}\n{essid} {signalStrength}%",
       "tooltip-format-disconnected": "Wi-Fi disconnected"
