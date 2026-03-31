@@ -14,7 +14,10 @@ normal.family = "MesloLGS Nerd Font Mono"
 size = 15
 
 [keyboard]
-bindings = [{ key = "F12", action = "ToggleFullscreen" }]
+bindings = [
+	{ key = "F12", action = "ToggleFullscreen" },
+	{ key = "Enter", mods = "Shift", chars = "\u001b\r" }
+]
 
 [general]
 # Check README at https://github.com/catppuccin/alacritty
