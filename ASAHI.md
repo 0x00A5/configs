@@ -49,4 +49,45 @@ Overnight, battery drained about 30% while the system is in sleep.
 
 Does this work?
 
+## Developing
+
+### Build Linux kernel
+
+Create the build directory in Linux source repository.
+```
+mkdir -p build
+```
+
+Merge configs for Asahi build.
+```
+scripts/kconfig/merge_config.sh -O build \
+arch/arm64/configs/defconfig \
+arch/arm64/configs/asahi.config
+```
+
+Finalize the build config.
+```
+make O=build ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- olddefconfig
+```
+
+Build the kernel.
+```
+  make -j"$(nproc)" O=build ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- \
+    Image.gz dtbs modules
+```
+
+Main outputs are the following.
+- build/vmlinux
+- build/arch/arm64/boot/Image.gz
+- build/arch/arm64/boot/dts/apple
+
+
+### Editor support
+
+Generate clangd config in the build directory.
+```
+python3 scripts/clang-tools/gen_compile_commands.py \
+-d build \
+-o build/compile_commands.json
+```
 
