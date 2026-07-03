@@ -3,6 +3,7 @@
 [user]
 name = "Yuan Lyu"
 email = "yuan@cucuru.ca"
+signingkey = "98B1ABD8D9F0C85BBE1150653D18278D9B044BD1"
 
 [ui]
 editor = "nvim"
