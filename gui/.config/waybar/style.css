@@ -36,7 +36,7 @@
 * {
   border: none;
   border-radius: 0;
-  font-family: "JetBrainsMono Nerd Font", "Source Han Sans CN", monospace;
+  font-family: "JetBrainsMono Nerd Font Mono", "Source Han Sans CN", monospace;
   font-size: 15px;
   min-height: 0;
 }
@@ -57,6 +57,7 @@ tooltip {
 #workspaces,
 #taskbar,
 #tray,
+#idle_inhibitor,
 #network,
 #pulseaudio,
 #cpu,
@@ -132,6 +133,16 @@ tooltip {
 
 #tray {
   background: @sky;
+  color: @crust;
+}
+
+#idle_inhibitor {
+  background: @surface0;
+  color: @text;
+}
+
+#idle_inhibitor.activated {
+  background: @green;
   color: @crust;
 }
 

@@ -11,6 +11,7 @@
     ],
     "modules-right": [
       "tray",
+      "idle_inhibitor",
       "network",
       "pulseaudio",
       "battery#bat0",
@@ -41,6 +42,17 @@
     // System tray
     "tray": {
       "spacing": 10
+    },
+
+    // Idle inhibitor toggle
+    "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": {
+        "activated": "",
+        "deactivated": ""
+      },
+      "tooltip-format-activated": "Idle inhibitor active",
+      "tooltip-format-deactivated": "Idle inhibitor inactive"
     },
 
     // Wi-Fi status
