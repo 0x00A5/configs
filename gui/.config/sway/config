@@ -15,8 +15,16 @@
 # pulseaudio
 # blueman
 # ttf-jetbrains-mono-nerd
+# xdg-desktop-portal
+# xdg-desktop-portal-gtk
 #
 # ---------------------------------
+
+# ---------------------------------
+# Session Environment
+# ---------------------------------
+
+include /etc/sway/config.d/*
 
 # ---------------------------------
 # Sway Basics
