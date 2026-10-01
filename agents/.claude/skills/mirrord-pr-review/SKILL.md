@@ -144,6 +144,8 @@ against it, and record the commands and the observed behavior for the report.
 
 ### In the terminal
 
+The review is read by a person, so it should sound like one wrote it.
+
 1. **Summary of the change:** an accurate, plain-language description of what the PRs do
    and how.
 2. **Verdict:** at most three sentences on merge readiness and the main reasons for it.
