@@ -75,7 +75,7 @@ outweigh issues in later ones.
 8. **Efficiency:** no avoidable allocations, copies, blocking calls, busy loops, extra 
    round trips, etc..
 
-Skip anything formatters, linters, or CI already enforce.
+Don't report issues that formatters, linters, or CI already catch.
 
 ## Step 5 — Verify findings
 
@@ -143,3 +143,4 @@ against it, and record the commands and the observed behavior for the report.
 1. Don't post anything to GitHub (or other). Keep all review comments local.
 2. Don't use a real staging cluster without asking first.
 3. Don't run e2e tests locally.
+4. Build or run tests only to reproduce a specific finding.
