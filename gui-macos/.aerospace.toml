@@ -107,7 +107,7 @@ on-mode-changed = []
     # end tell'
     # '''
 	alt-enter = "exec-and-forget open -na /Applications/Alacritty.app/Contents/MacOS/alacritty"
-	ctrl-cmd-b = "exec-and-forget /Applications/Firefox.app/Contents/MacOS/firefox"
+	ctrl-cmd-b = "exec-and-forget open -a Firefox"
 	alt-shift-q = "close"
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#layout
