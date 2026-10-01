@@ -2,7 +2,7 @@
 name: mirrord-pr-review
 description: This skill is for reviewing PRs in mirrord related repositories, such as mirrord, operator, VS Code extension, and IntelliJ extension.
 argument-hint: "PR URLs"
-allowed-tools: Bash(gh pr view:*), Bash(gh pr diff:*), Bash(gh pr checks:*), Bash(git log:*), Bash(git diff:*), Bash(git show:*), Bash(jj git fetch:*), Bash(jj new:*), Bash(jj log:*), Bash(jj diff:*), Bash(jj show:*), Bash(jj status:*), mcp__linear__get_issue, mcp__linear__list_comments, Read, Grep, Glob
+allowed-tools: Bash(gh pr view:*), Bash(gh pr diff:*), Bash(gh pr checks:*), Bash(git log:*), Bash(git diff:*), Bash(git show:*), Bash(jj git fetch:*), Bash(jj new:*), Bash(jj log:*), Bash(jj diff:*), Bash(jj show:*), Bash(jj status:*), mcp__linear-server__get_issue, mcp__linear-server__list_comments, Read, Grep, Glob
 disable-model-invocation: true
 ---
 
@@ -20,8 +20,8 @@ matters, and what to change.
 
 ## Step 1 — Set up
 
-**Check for the Linear MCP server.** If no `mcp__linear__*` tools are available, stop and
-ask the user to install it (`claude mcp add --scope user --transport http linear
+**Check for the Linear MCP server.** If no `mcp__linear-server__*` tools are available, stop and
+ask the user to install it (`claude mcp add --scope user --transport http linear-server
 https://mcp.linear.app/mcp`, then restart the session). Don't fall back to reviewing
 without the issue.
 
@@ -70,9 +70,12 @@ outweigh issues in later ones.
 5. **Simplicity:** no unnecessary abstraction, indirection, or code that could be removed.
 6. **Consistency with the codebase:** follows established patterns, and reuses or extends
    existing modules for similar purposes instead of duplicating them.
-7. **Comments and documentation:** concise, accurate, human-readable and updated where 
+7. **Tests:** every new or changed piece of logic is covered by a test that would fail
+   without the change. Flag tests that only exercise existing behavior, duplicate another
+   test's coverage, or don't assert anything meaningful.
+8. **Comments and documentation:** concise, accurate, human-readable and updated where 
    behavior changed.
-8. **Efficiency:** no avoidable allocations, copies, blocking calls, busy loops, extra 
+9. **Efficiency:** no avoidable allocations, copies, blocking calls, busy loops, extra 
    round trips, etc..
 
 Don't report issues that formatters, linters, or CI already catch.
