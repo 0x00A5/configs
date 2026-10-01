@@ -1,0 +1,8 @@
+{
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
+  "effortLevel": "high",
+  "theme": "dark",
+  "cleanupPeriodDays": 14
+}
