@@ -11,4 +11,4 @@ merge-editor = "meld"
 
 [signing]
 backend = "gpg"
-behavior = "own"
+behavior = "drop"
