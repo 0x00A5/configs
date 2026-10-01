@@ -2,7 +2,7 @@
 name: mirrord-pr-review
 description: This skill is for reviewing PRs in mirrord related repositories, such as mirrord, operator, VS Code extension, and IntelliJ extension.
 argument-hint: "PR URLs"
-allowed-tools: Bash(gh pr view:*), Bash(gh pr diff:*), Bash(gh pr checks:*), Bash(git log:*), Bash(git diff:*), Bash(git show:*), Bash(jj git fetch:*), Bash(jj new:*), Bash(jj log:*), Bash(jj diff:*), Bash(jj show:*), Bash(jj status:*), mcp__linear-server__get_issue, mcp__linear-server__list_comments, Read, Grep, Glob
+allowed-tools: Bash(gh pr view:*), Bash(gh pr diff:*), Bash(gh pr checks:*), Bash(gh api:*), Bash(git log:*), Bash(git diff:*), Bash(git show:*), Bash(git blame:*), Bash(jj git fetch:*), Bash(jj new:*), Bash(jj log:*), Bash(jj diff:*), Bash(jj show:*), Bash(jj status:*), Bash(jj restore:*), mcp__linear-server__get_issue, mcp__linear-server__list_comments, Read, Grep, Glob, Write, Edit
 disable-model-invocation: true
 ---
 
@@ -47,6 +47,15 @@ ask the user for the issue description. Don't infer the motivation from the diff
 Before looking for problems, describe what the change does in your own language and 
 how it solves the issue, end to end.
 
+**When the change alters existing behavior** (lock scope, ordering, retries, error handling,
+defaults), find out why the old behavior was the way it was before judging the new one:
+
+- Use `git log -L` or `git blame` on the old code, and read the PRs that introduced it.
+  Decide whether the old behavior was deliberate or a side effect (e.g. the lifetime of a
+  temporary in a `match` scrutinee).
+- Either way, list what the old behavior guaranteed in practice, and which code relies on
+  those guarantees now. Accidental guarantees are the most likely to be broken silently.
+
 When reviewing several PRs together (e.g. a mirrord change with a matching operator change),
 treat them as one solution:
 
@@ -72,9 +81,10 @@ outweigh issues in later ones.
    existing modules for similar purposes instead of duplicating them.
 7. **Tests:** every new or changed piece of logic is covered by a test that would fail
    without the change. Flag tests that only exercise existing behavior, duplicate another
-   test's coverage, or don't assert anything meaningful.
+   test's coverage, or don't assert anything meaningful. Check that tests run on every
+   platform the fix applies to, and that CI actually runs them there.
 8. **Comments and documentation:** concise, accurate, human-readable and updated where 
-   behavior changed.
+   behavior changed. Flag comments that promise more than the code does.
 9. **Efficiency:** no avoidable allocations, copies, blocking calls, busy loops, extra 
    round trips, etc..
 
@@ -132,12 +142,15 @@ against it, and record the commands and the observed behavior for the report.
 
 ## Output
 
+### In the terminal
+
 1. **Summary of the change:** an accurate, plain-language description of what the PRs do
    and how.
 2. **Verdict:** at most three sentences on merge readiness and the main reasons for it.
 3. **Findings:** ordered by severity, most severe first. For each finding give:
    - `file:line`
    - what is wrong and why it matters
+   - origin, trigger, likelihood, and whether it blocks the merge
    - what to change, with a code suggestion when the fix is clear-cut
    - whether it was reproduced, and how
 
