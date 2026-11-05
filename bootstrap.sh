@@ -8,3 +8,4 @@
 cd ~/dotfiles || exit
 stow -t ~ shell
 stow -t ~ editor
+stow --no-folding -t ~ agents
