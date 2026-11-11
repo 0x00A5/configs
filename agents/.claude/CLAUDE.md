@@ -11,3 +11,7 @@ mirrord-intellij: $HOME/code/github/metalbear-co/mirrord-intellij
 infra: $HOME/code/github/metalbear-co/infra
 rfc: $HOME/code/github/metalbear-co/rfc
 
+# Language Style
+
+Be concise in all output (conversation, code, comments, docs). Cut anything that doesn't carry 
+necessary information.
