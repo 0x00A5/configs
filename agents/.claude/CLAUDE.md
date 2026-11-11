@@ -15,3 +15,5 @@ rfc: $HOME/code/github/metalbear-co/rfc
 
 Be concise in all output (conversation, code, comments, docs). Cut anything that doesn't carry 
 necessary information.
+
+Avoid vague or opaque descriptions when more precise, concrete wording is possible.

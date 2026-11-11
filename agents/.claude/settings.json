@@ -3,13 +3,14 @@
   "enabledPlugins": {
     "rust-analyzer-lsp@claude-plugins-official": true,
     "clangd-lsp@claude-plugins-official": true,
-    "slack@claude-plugins-official": true
+    "slack@claude-plugins-official": true,
+    "posthog@anthropic-plugin-directory": true
   },
-  "theme": "dark",
-  "switchModelsOnFlag": false,
   "modelSettings": {
     "claude-opus-5-5": {
       "effortLevel": "high"
     }
-  }
+  },
+  "theme": "dark",
+  "switchModelsOnFlag": false
 }
