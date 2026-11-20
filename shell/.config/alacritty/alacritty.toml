@@ -26,5 +26,5 @@ import = [
 ]
 
 [terminal.shell]
-program = "fish"
+program = "/opt/homebrew/bin/fish"
 args = ["-l"]
