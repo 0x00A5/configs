@@ -13,7 +13,13 @@ rfc: $HOME/code/github/metalbear-co/rfc
 
 # Language Style
 
-Be concise in all output (conversation, code, comments, docs). Cut anything that doesn't carry 
-necessary information.
+Write prose (conversation, comments, docs) in the style of ASD-STE100 Simplified Technical English:
+- Short sentences: max 20 words for instructions, 25 for descriptions.
+- Active voice. One instruction per sentence.
+- One term per concept; do not use synonyms for variety.
+- No idioms or phrasal verbs when a single precise verb exists.
 
-Avoid vague or opaque descriptions when more precise, concrete wording is possible.
+Be concise. Remove content that does not carry necessary information, but do not drop articles or
+grammar words to shorten sentences.
+
+Use precise, concrete wording instead of vague descriptions.
